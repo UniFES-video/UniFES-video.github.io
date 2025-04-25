@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="CelebV-Text: A Large-Scale Facial Text-Video Dataset">
+    <meta name="keywords" content="CelebV-Text Dataset">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CelebV-Text: A Large-Scale Facial Text-Video Dataset</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
+    <style>
+        #pic_list {
+            display: block;
+            white-space: nowrap;
+            overflow: auto;
+        }
+
+        #pic_list li {
+            display: inline-block;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">CelebV-Text: A Large-Scale Facial Text-Video Dataset</h1>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"></span>
+                        <h3 style="color:#5a6268;">CVPR 2023</h3>
+                        <span class="author-block">
+                            <a href="https://scholar.google.com/citations?user=sdxlMmMAAAAJ&hl=en">Jianhui Yu</a><sup>1*</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://www.zhuhaozh.xyz">Hao Zhu</a><sup>2*</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://liming-jiang.com/">Liming Jiang</a><sup>3</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://scholar.google.com/citations?user=559LF80AAAAJ&hl=en">Chen Change Loy</a><sup>3</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://weidong-tom-cai.github.io/">Weidong Cai</a><sup>1 </sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://wywu.github.io/">Wayne Wu</a><sup>4&#8224 </sup>
+                        </span>
+                        <br>
+                        <small>(*Equal contribution)</small>
+                    </div>
+
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>University of Sydney, </span>
+                        <span class="author-block"><sup>2</sup>SenseTime Research, </span>
+                        <span class="author-block"><sup>3</sup>S-Lab, Nanyang Technological University </span>
+                        <span class="author-block"><sup>4</sup>Shanghai AI Laboratory </span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- PDF Link. -->
+                            <span class="link-block">
+                                <a href="https://arxiv.org/pdf/2303.14717.pdf"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </span>
+                                    <span>Paper (arxiv)</span>
+                                </a>
+                            </span>
+                            <!-- <span class="link-block">
+                              <a href="https://drive.google.com/file/d/1WsopipyFG5Kuilwo0pbOmzhZfxs0dx-C/view?usp=sharing"
+                                target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                  <i class="ai ai-arxiv"></i>
+                                </span>
+                                <span>Supplement</span>
+                              </a>
+                            </span> -->
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                                <a href="https://github.com/CelebV-Text/CelebV-Text"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>GitHub</span>
+                                </a>
+                            </span>
+                            <!-- Video Link. -->
+                            <span class="link-block">
+                                <a href="https://www.youtube.com/watch?v=0TS1hQwjNWw"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-youtube"></i>
+                                    </span>
+                                    <span>Demo Video</span>
+                                </a>
+                            </span>
+                            <!-- Dataset Link. -->
+                            <span class="link-block">
+                                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="far fa-images"></i>
+                                    </span>
+                                    <span>Data Explore (Coming soon)</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+<!-- Teaser Picture -->
+<section class="hero teaser">
+    <div class="container is-max-desktop">
+        <div class="hero-body">
+            <div class="figure">
+                <video id="replay-video" controls muted preload autoplay loop width="100%">
+                    <source src="./static/video/teaser.mp4" type="video/mp4">
+                </video>
+                <!-- <img class="Sirv image-main" src="static/img/teaser_v3.png" data-src="static/img/teaser_v3.png"> -->
+                <!-- <img class="Sirv image-hover" data-src="static/img/teaser_hover3.png"> -->
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Abstract. -->
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Why CelebV-Text?</h2>
+                <div class="content has-text-justified">
+                    <img src="static/img/why.png" data-src="static/img/teaser_v3.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Abstract. -->
+
+<!-- Abstract. -->
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p> Currently, text-driven generation models are booming in video editing with their compelling
+                        results.
+                        However, for the face-centric text-to-video generation, challenges remain severe as a suitable
+                        dataset with high-quality videos and highly-relevant texts is lacking.
+                        In this work, we present a large-scale, high-quality, and diverse facial text-video dataset, <b>CelebV-Text</b>,
+                        to facilitate the research of facial text-to-video generation tasks.
+                    </p>
+                    <p>
+                        CelebV-Text contains 70,000 in-the-wild face video clips covering diverse visual content.
+                        Each video clip is paired with 20 texts generated by the proposed semi-auto text generation
+                        strategy,
+                        which is able to describe both the static and dynamic attributes precisely.
+                        We make comprehensive statistical analysis on videos, texts, and text-video relevance of
+                        CelebV-Text,
+                        verifying its superiority over other datasets.
+                        Also, we conduct extensive self-evaluations to show the effectiveness and potential of
+                        CelebV-Text.
+                        Furthermore, a benchmark is constructed with representative methods to standardize the
+                        evaluation of the facial text-to-video generation task.
+                    </p>
+                    <p>For more details of the dataset, please refer to the paper "<a
+                            href="#">CelebV-Text: A Large-Scale Facial Text-Video
+                        Dataset</a>".
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Abstract. -->
+
+
+<!-- Paper video. -->
+<section>
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-three-fifths">
+            <h2 class="title is-3">Overview Video</h2>
+            <div class="publication-video">
+                <iframe src="https://www.youtube.com/embed/0TS1hQwjNWw?autoplay=0" frameborder="10"
+                        allow="autoplay; encrypted-media" width="50%" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / Paper video.   -->
+
+
+<!-- / Paper video.   -->
+
+<!--
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3 "> Overview</h2>
+          <div class="publication-video">
+            <video id="replay-video" controls muted preload autoplay loop width="100%">
+              <source src="./static/video/demo.mp4" type="video/mp4">
+            </video>
+          </div>
+  </section> -->
+<hr/>
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3 "> Face Datasets Comparison</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        CelebV-Text contains <b>70,000 video clips</b> with a total duration of around <b>279
+                        hours</b>.
+                        Each video is accompanied by <b>20 sentences</b> describing <b>6 designed attributes</b>,
+                        including 40 general appearances,
+                        5 detailed appearances, 6 light conditions, 37 actions, 8 emotions, and 6 light directions.
+                    </p>
+
+                    <image src="static/img/data_comp.png" class="img-responsive" alt="overview">
+                    </image>
+                </div>
+
+                <h2 class="title is-3 "> Statistics </h2>
+                <h3 class="title is-4 "> (a) Video Analysis </h3>
+                <div class="content has-text-justified">
+                    <p>
+                        The distributions of each attribute. CelebV-Text has a diverse distribution on each attribute
+                        classes.
+                    </p>
+                    <image src="static/img/video_stats.png" class="img-responsive" alt="video_distribution">
+                    </image>
+                </div>
+
+                <h3 class="title is-4"> (b) Text Analysis</h3>
+                <div class="content has-text-justified">
+                    <p>
+                        The distributions of generated texts. CelebV-Text has a diverse, natural, and scalable texts.
+                    </p>
+                    <image src="static/img/text_stats.png" class="img-responsive" alt="text_distribution" width="100%"
+                           height="auto">
+                    </image>
+                </div>
+
+                <h3 class="title is-4"> (c) Text-Video Relevance </h3>
+                <div class="content has-text-justified">
+                    <p>
+                        The distributions of generated texts. CelebV-Text has texts relevant to videos.
+                    </p>
+                    <image src="static/img/text_video_rel.png" class="img-responsive" alt="relevance">
+                    </image>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<hr/>
+
+
+<!-- demo of All -->
+<br/><br/>
+<section class="section">
+    <div class="container is-four-fifths">
+        <h3 class="title is-4 has-text-centered">Demo of Videos (Full description of the video)</h3>
+        <!-- <p >full description of a video</p> -->
+        <div class="content has-text-justified">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/all/hb9h_36QpDk_0.mp4" type="video/mp4">
+                        </video>
+                        <p>
+                            <font color="#7030a0">This young man has double chin, bags under eyes and beard. </font>
+                            <font color="#61af60">He has moles on each corner of the mouth. </font>
+                            <font color="bf9106">He starts with an expression of happiness, and he then turns to be
+                                neutral. </font>
+                            <font color="3488cb">To begin with, He talks for a short time, next he turns his
+                                head. </font>
+                            <font color="#c72221">This video is bright with a daylight color temperature. </font>
+                            <font color="#c55a11">The light direction is back lighting for the whole time.</font>
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/all/czmFS1giNe4_7_0.mp4" type="video/mp4">
+                        </video>
+                        <p>
+                            <font color="#7030a0">This female has arched eyebrows and blond hair. She has high
+                                cheekbones. She wears earrings and lipstick. </font>
+                            <font color="#61af60">There is a mole in the right cheek and two dimples on both sides of
+                                the mouth of the mouth. </font>
+                            <font color="bf9106">At the beginning, this woman remains an expression of surprise, and
+                                next she turns into an expression of fear, and she then has a face of surprise, and then
+                                she has a face of surprise, in the end, she has an expression of sadness.</font>
+                            <font color="3488cb">To begin with, this female talks for a short time, then she turns for a
+                                short time. </font>
+                            <font color="#c72221">The light intensity of the video is bright with a cool white color
+                                temperature. </font>
+                            <font color="#c55a11">The light direction is front lighting for the whole time.</font>
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/all/d8g60sx6rus_5_0.mp4" type="video/mp4">
+                        </video>
+                        <p>
+                            <font color="#7030a0">A woman is wearing lipstick. She is young. She has heavy makeup and
+                                straight hair. </font>
+                            <font color="#61af60">She has a mole on the corner of the left and right eyes, and there are
+                                two moles in the middle of the left cheek. </font>
+                            <font color="bf9106">The woman has got an expression of surprise throughout the
+                                video. </font>
+                            <font color="3488cb">This woman wags head while talking for a long time. </font>
+                            <font color="#c72221">The light intensity of the video intensity is dark and the color
+                                temperature is daylight. </font>
+                            <font color="#c55a11">The light direction is front lighting for the whole time.</font>
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/all/tA_fzoKi3Qg_10_0.mp4" type="video/mp4">
+                        </video>
+                        <p>
+                            <font color="#7030a0">He is chubby, with beard and double chin. He has high cheekbones and
+                                goatee, </font>
+                            <font color="#61af60">with a mole at the corner of the left face.</font>
+                            <font color="bf9106">This man first has an expression of happiness, and next he has an
+                                expression of disgust, he eventually has a face of sadness.</font>
+                            <font color="3488cb">He talks for a long time.</font>
+                            <font color="#c72221">The light intensity of this video is normal with a cool white color
+                                temperature. </font>
+                            <font color="#c55a11">The light direction is front lighting for the whole video.</font>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- demo of General Appearance -->
+<br/><br/>
+<section class="section">
+    <div class="container is-four-fifths">
+        <h3 class="title is-4 has-text-centered">(a) Demo of General Appearances</h3>
+        <div class="content has-text-justified">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/general/cL_j8SANIus_0_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#7030A0">
+                            He is wearing eyeglasses and he is young. The man is wearing a hat.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/general/eH5YX2zo-f0_32_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#7030A0">
+                            She is young. This woman has black hair. She is wearing eyeglasses and wearing a hat.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/general/GvramaQGVMY_8_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#7030A0">
+                            The young man has beard and 5 o'clock shadow. He has bushy eyebrows and sideburns.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/general/kmLicwSvK7w_8_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#7030A0">
+                            He has beard, and he is wearing goatee and eyeglasses.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / demo of General Appearance -->
+
+<!-- demo of Detailed Appearance -->
+<br/><br/>
+<section class="section">
+    <div class="container is-four-fifths">
+        <h3 class="title is-4 has-text-centered">(b) Demo of Detailed Appearances</h3>
+        <div class="content has-text-justified">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/details/2GdHDMQlrfA_0_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#51A851">
+                            He has two dimples on the left and right of the mouth.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/details/9W42BAfb3c8_2_1.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#51A851">
+                            He has round moles on the corner of the left eye and above the eyebrows.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/details/aZN5c6LK5f4_38_1.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#51A851">
+                            She has a mole under the mouth.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/details/dwF7fYIw2mI_3_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#51A851">
+                            There is a mole under the right eye and one mole on the left side of the nose.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / demo of Detailed Appearance -->
+
+<!-- demo of Actions -->
+<br/><br/>
+<section class="section">
+    <div class="container is-four-fifths">
+        <h3 class="title is-4 has-text-centered">(c) Demo of Actions</h3>
+        <div class="content has-text-justified">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/actions/nDnm2IIkgkQ_9_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#4472C4">
+                            To begin with, the male talks for a short time, then he eats for a short time, he finally
+                            talks for a short time.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/actions/Oy_gr6zdxbQ_5_2.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#4472C4">
+                            He begins to turn meanwhile talking for a short time, then he turns for a short time.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/actions/rpyMmObGk1s_72_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#4472C4">
+                            This man first smiles for a short time, and then eats for a short time, in the end, he chews
+                            for a short time.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/actions/-ZALJOhWzXY_7_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#4472C4">
+                            This woman begins to turns and laughs at the same time for a short time, then she turns for
+                            a short time, she eventually turns for a short time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / demo of Actions -->
+
+<!-- demo of Emotions -->
+<br/><br/>
+<section class="section">
+    <div class="container is-four-fifths">
+        <h3 class="title is-4 has-text-centered">(d) Demo of Emotions</h3>
+        <div class="content has-text-justified">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/emotion/0BZ0cYR1fB4_21_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#BF9000">
+                            All the while this woman has a face of happiness.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/emotion/ffz4JNQFK-E_0_2.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#BF9000">
+                            At the beginning, this man has a surprised face, and then he turns into an angry expression.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/emotion/FbB_u_NVVDg_30_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#BF9000">
+                            This female first has a face of happiness, she then turns into an expression of surprise.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/emotion/SiuXoZBg3TQ_24_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#BF9000">
+                            At the beginning, this man has a sad expression, and then he turns surprised, he finally is happy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / demo of Emotions -->
+
+<!-- demo of light directions -->
+<br/><br/>
+<section class="section">
+    <div class="container is-four-fifths">
+        <h3 class="title is-4 has-text-centered">(e) Demo of Light Directions</h3>
+        <div class="content has-text-justified">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/light_dir/B16Hv59sixs_14_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#C00000">
+                            To begin with, the light direction is side lighting with 90 degrees to the left of the face
+                            for a short time. The light direction is then side lighting with 45 degrees to the left of the
+                            face for a long time. The light direction is then front lighting for a short time. Then the
+                            light direction is side lighting with 45 degrees to the left of the face for a long time.
+                            In the end, the light direction is front lighting for some time.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/light_dir/r10EfWKkoZo_29_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#C00000">
+                            The light direction is first front lighting for a long time. Then the light direction is
+                            side lighting with 45 degrees to the right of the face for a long time.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/light_dir/L7jfx4veKIA_3_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#C00000">
+                            To begin with, the light direction is side lighting with 90 degrees to the right of the face
+                            for some time.
+                            The light direction is then side lighting with 45 degrees to the right of the face for a moderate time.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/light_dir/L645X52FR4A_5_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#C00000">
+                            The light direction is first front lighting for a short time.
+                            Then the light direction is side lighting with 45 degrees to the right of the face for a short time.
+                            In the end, the light direction is front lighting for a moderate time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / demo of light directions -->
+
+<!-- demo of light intensity -->
+<br/><br/>
+<section class="section">
+    <div class="container is-four-fifths">
+        <h3 class="title is-4 has-text-centered">(f) Demo of Light Intensity</h3>
+        <div class="content has-text-justified">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/light_intensity/cdKyehfK2TY_38_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#C55A11">
+                            The light intensity of the video is dark.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/light_intensity/dwLvx47XN0k_13_1.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#C55A11">
+                            The light intensity of the video is dark.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/light_intensity/gcrShVOKnAA_4_1.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#C55A11">
+                            This video is bright.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/light_intensity/h-kJ1vlcK6k_7_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#C55A11">
+                            The light intensity of the video is normal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / demo of light intensity -->
+
+<!-- demo of light color temperature -->
+<br/><br/>
+<section class="section">
+    <div class="container is-four-fifths">
+        <h3 class="title is-4 has-text-centered">(g) Demo of Light Color Temperature</h3>
+        <div class="content has-text-justified">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/light_color/Jw_zvzS0zE_8_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#C55A11">
+                            The color temperature of this video is bright.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/light_color/lIR8nnP3Vqs_9_0.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#C55A11">
+                            The color temperature is cool white.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="./static/video/light_color/g3grlAFSLIE_11_1.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#C55A11">
+                            The color temperature is daylight.
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop height="100%">
+                            <source src="static/video/light_color/g_APSRSX7yE_18_2.mp4" type="video/mp4">
+                        </video>
+                        <p style="color:#C55A11">
+                            The color temperature is daylight.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / demo of light color temperature -->
+
+
+<!-- / demo of light color temperature -->
+
+<!--    &lt;!&ndash; #2  &ndash;&gt;-->
+<!--    <br/><br/>-->
+<!--    <h3 class="title is-4 has-text-centered">Demo of Actions</h3>-->
+<!--    <div class="content has-text-justified">-->
+<!--        <div class="slideshow-container">-->
+
+
+<!--            <div class="mySlides2 fade">-->
+<!--                <div class="publication-video">-->
+<!--                    <video id="replay-video" controls muted preload autoplay loop width="100%">-->
+<!--                        <source src="./static/video/action_laugh.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                    &lt;!&ndash; <iframe src="https://www.youtube.com/embed/SGXlkOcYKhs?autoplay=1"-->
+<!--                      frameborder="0" allow="autoplay; encrypted-media" width="100%" height="80%"></iframe> &ndash;&gt;-->
+<!--                </div>-->
+<!--                &lt;!&ndash; <video id="replay-video" controls muted preload autoplay loop width="155%">-->
+<!--                    <source src="./static/videos/10x1-style-mixing_5_9_clothingtype.mp4" type="video/mp4"></video>  &ndash;&gt;-->
+<!--                <br>-->
+<!--                <div class="text">[1 / 3] Action: Laugh</div>-->
+<!--                &lt;!&ndash; <div class="numbertext">1 / 3</div> &ndash;&gt;-->
+<!--            </div>-->
+
+<!--            <div class="mySlides2 fade">-->
+<!--                <div class="publication-video">-->
+<!--                    <video id="replay-video" controls muted preload autoplay loop width="100%">-->
+<!--                        <source src="./static/video/action_close_eyes.mp4" type="video/mp4">-->
+<!--                    </video>-->
+
+<!--                    &lt;!&ndash; <image src="static/img/demo.gif" width="100%" class="img-responsive" alt="overview"> &ndash;&gt;-->
+<!--                    &lt;!&ndash; <iframe src="https://www.youtube.com/embed/p2uwqh_SFL8?autoplay=1"-->
+<!--                      frameborder="0" allow="autoplay; encrypted-media" width="100%" height="80%"></iframe> &ndash;&gt;-->
+<!--                </div>-->
+<!--                &lt;!&ndash; <video id="replay-video" controls muted preload autoplay loop width="155%">-->
+<!--                    <source src="./static/videos/10x1-style-mixing_10_17_clothingcolor.mp4" type="video/mp4"></video> &ndash;&gt;-->
+<!--                &lt;!&ndash; <div class="numbertext">3 / 3</div> &ndash;&gt;-->
+<!--                <br>-->
+<!--                <div class="text">[2 / 3] Action: Close Eyes</div>-->
+<!--            </div>-->
+
+<!--            <div class="mySlides2 fade">-->
+<!--                <div class="publication-video">-->
+<!--                    <video id="replay-video" controls muted preload autoplay loop width="100%">-->
+<!--                        <source src="./static/video/action_talk.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; <video id="replay-video" controls muted preload autoplay loop width="155%">-->
+<!--                    <source src="./static/videos/10x1-style-mixing_0_3_pose.mp4" type="video/mp4"></video> &ndash;&gt;-->
+<!--                &lt;!&ndash; <div class="numbertext">1 / 3</div> &ndash;&gt;-->
+<!--                <br>-->
+<!--                <div class="text">[3 / 3] Action: Talking</div>-->
+<!--            </div>-->
+<!--            <a class="prev" onclick="plusSlides2(-1)">❮</a>-->
+<!--            <a class="next" onclick="plusSlides2(1)">❯</a>-->
+<!--        </div>-->
+<!--        <div style="text-align:center">-->
+<!--            <span class="dot2 dot" onclick="currentSlide2(1)"></span>-->
+<!--            <span class="dot2 dot" onclick="currentSlide2(2)"></span>-->
+<!--            <span class="dot2 dot" onclick="currentSlide2(3)"></span>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <script>-->
+<!--        let slideIndex2 = 1;-->
+<!--        showSlides2(slideIndex2);-->
+
+<!--        function plusSlides2(n) {-->
+<!--            showSlides2(slideIndex2 += n);-->
+<!--        }-->
+
+<!--        function currentSlide2(n) {-->
+<!--            showSlides2(slideIndex2 = n);-->
+<!--        }-->
+
+<!--        function showSlides2(n) {-->
+<!--            let i;-->
+<!--            let slides = document.getElementsByClassName("mySlides2");-->
+<!--            let dots = document.getElementsByClassName("dot2");-->
+<!--            if (n > slides.length) {-->
+<!--                slideIndex2 = 1-->
+<!--            }-->
+<!--            if (n < 1) {-->
+<!--                slideIndex2 = slides.length-->
+<!--            }-->
+<!--            for (i = 0; i < slides.length; i++) {-->
+<!--                slides[i].style.display = "none";-->
+<!--            }-->
+<!--            for (i = 0; i < dots.length; i++) {-->
+<!--                dots[i].className = dots[i].className.replace(" active", "");-->
+<!--            }-->
+<!--            slides[slideIndex2 - 1].style.display = "block";-->
+<!--            dots[slideIndex2 - 1].className += " active";-->
+<!--        }    // https://stackoverflow.com/questions/47368940/css-slideshow-not-showing-image-until-clicked-->
+
+<!--    </script>-->
+
+
+<!--    &lt;!&ndash; #3  &ndash;&gt;-->
+<!--    &lt;!&ndash; #3  &ndash;&gt;-->
+<!--    &lt;!&ndash; #3  &ndash;&gt;-->
+<!--    &lt;!&ndash; #3  &ndash;&gt;-->
+<!--    &lt;!&ndash; #3  &ndash;&gt;-->
+<!--    &lt;!&ndash; #3  &ndash;&gt;-->
+<!--    <br/><br/>-->
+<!--    <h3 class="title is-4 has-text-centered">Demo of Emotions</h3>-->
+<!--    <div class="content has-text-justified">-->
+<!--        <div class="slideshow-container">-->
+
+
+<!--            <div class="mySlides3 fade">-->
+<!--                <div class="publication-video">-->
+<!--                    <video id="replay-video" controls muted preload autoplay loop width="100%">-->
+<!--                        <source src="./static/video/emotion_sad.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                    &lt;!&ndash; <iframe src="https://www.youtube.com/embed/g3nmM6MdxwY?autoplay=1"-->
+<!--                      frameborder="0" allow="autoplay; encrypted-media" width="100%" height="80%"></iframe> &ndash;&gt;-->
+<!--                </div>-->
+<!--                &lt;!&ndash; <video id="replay-video" controls muted preload autoplay loop width="155%">-->
+<!--                    <source src="./static/videos/10x1-style-mixing_5_9_clothingtype.mp4" type="video/mp4"></video>  &ndash;&gt;-->
+<!--                <br>-->
+<!--                <div class="text">[1 / 3] Emotion: Sad</div>-->
+<!--                &lt;!&ndash; <div class="numbertext">1 / 3</div> &ndash;&gt;-->
+<!--            </div>-->
+
+<!--            <div class="mySlides3 fade">-->
+<!--                <div class="publication-video">-->
+<!--                    <video id="replay-video" controls muted preload autoplay loop width="100%">-->
+<!--                        <source src="./static/video/emotion_angey.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                <br>-->
+<!--                <div class="text">[2 / 3] Emotion: Anger</div>-->
+<!--            </div>-->
+
+<!--            <div class="mySlides3 fade">-->
+<!--                <div class="publication-video">-->
+<!--                    <video id="replay-video" controls muted preload autoplay loop width="100%">-->
+<!--                        <source src="./static/video/emotion_happy.mp4" type="video/mp4">-->
+<!--                    </video>-->
+<!--                </div>-->
+<!--                <br>-->
+<!--                <div class="text">[3 / 3] Emotion: Happy</div>-->
+<!--            </div>-->
+
+<!--            <a class="prev" onclick="plusSlides3(-1)">❮</a>-->
+<!--            <a class="next" onclick="plusSlides3(1)">❯</a>-->
+<!--        </div>-->
+<!--        <div style="text-align:center">-->
+<!--            <span class="dot3 dot" onclick="currentSlide3(1)"></span>-->
+<!--            <span class="dot3 dot" onclick="currentSlide3(2)"></span>-->
+<!--            <span class="dot3 dot" onclick="currentSlide3(3)"></span>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <script>-->
+<!--        let slideIndex3 = 1;-->
+<!--        showSlides3(slideIndex3);-->
+
+<!--        function plusSlides3(n) {-->
+<!--            showSlides3(slideIndex3 += n);-->
+<!--        }-->
+
+<!--        function currentSlide3(n) {-->
+<!--            showSlides3(slideIndex3 = n);-->
+<!--        }-->
+
+<!--        function showSlides3(n) {-->
+<!--            let i;-->
+<!--            let slides = document.getElementsByClassName("mySlides3");-->
+<!--            let dots = document.getElementsByClassName("dot3");-->
+<!--            if (n > slides.length) {-->
+<!--                slideIndex3 = 1-->
+<!--            }-->
+<!--            if (n < 1) {-->
+<!--                slideIndex3 = slides.length-->
+<!--            }-->
+<!--            for (i = 0; i < slides.length; i++) {-->
+<!--                slides[i].style.display = "none";-->
+<!--            }-->
+<!--            for (i = 0; i < dots.length; i++) {-->
+<!--                dots[i].className = dots[i].className.replace(" active", "");-->
+<!--            }-->
+<!--            slides[slideIndex3 - 1].style.display = "block";-->
+<!--            dots[slideIndex3 - 1].className += " active";-->
+<!--        }    // https://stackoverflow.com/questions/47368940/css-slideshow-not-showing-image-until-clicked-->
+
+<!--    </script>-->
+<!--    <hr/>-->
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3 "> Benchmark</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        We construct a benchmark of the facial text-to-video generation task, for two currently
+                        prevalent models (TFGAN and MMVID) on three dataset (MM-Vox, CelebV-HQ* and CelebV-Text).
+                        <br/>
+                        (*We generate text descriptions for CelebV-HQ based on our designed text templates.)
+                    </p>
+                </div>
+                <figure>
+                    <figcaption>Table: FVD/FID/CLIPSIM Metrics Comparison with Input Texts about General Appearance
+                    </figcaption>
+                    <image src="static/img/benchmark_general.png" class="img-responsive" alt="overview" height="100%"
+                           width="auto">
+                    </image>
+                </figure>
+
+                <h2 class="is-4 title"> Facial Text-to-Video Generation</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        We conduct experiments to show the effectiveness of our CelebV-Text dataset based on MMVID,
+                        where input texts contain descriptions of different attributes.
+                    </p>
+                </div>
+                <figure>
+                    <figcaption>Table: FVD/FID/CLIPSIM Metrics Comparison with Input Texts about General Appearance with
+                        Emotion/Action.
+                    </figcaption>
+                    <image src="static/img/benchmark_emo_act.png" class="img-responsive" alt="overview" height="100%"
+                           width="auto">
+                    </image>
+                </figure>
+
+                <!-- <h3 class="is-4 title"> Generated Results </h3>
+                <div class="content has-text-justified">
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <div class="content">
+                                <video controls muted preload autoplay loop width="100%">
+                                    <source src="static/video/results/1.mp4" type="video/mp4">
+                                </video>
+                                <p>
+                                    The young man has arched eyebrows and brown hair. He has bags under eyes. He is
+                                    first neutral and then happy, and finally he is neutral. He smiles all the time.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="content">
+                                <video controls muted preload autoplay loop width="100%">
+                                    <source src="static/video/results/3.mp4" type="video/mp4">
+                                </video>
+                                <p>
+                                    The young woman has arched eyebrows. She has brown hair and she has an oval face.
+                                    She is first surprised and then neutral. She wags her head and then talks.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <video controls muted preload autoplay loop width="100%">
+                                    <source src="static/video/results/2.mp4" type="video/mp4">
+                                </video>
+                                <p>
+                                    The man has brown hair and a big nose. He has bags under eyes. He begins with an
+                                    angry face and then turns into a neutral face. He is talking and then wagging his
+                                    head.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <video controls muted preload autoplay loop width="100%">
+                                    <source src="static/video/results/8.mp4" type="video/mp4">
+                                </video>
+                                <p>
+                                    This young woman has a long brown hair. She wears lipstick. She has an oval face.
+                                    Firstly, she is happy, and then she has a neutral face. She blinks and then gazes.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content has-text-justified">
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <div class="content">
+                                <video controls muted preload autoplay loop width="100%">
+                                    <source src="static/video/results/4.mp4" type="video/mp4">
+                                </video>
+                                <p>
+                                    The man has beard and mustache. He has a big nose. He has an angry face the whole
+                                    time. He is wagging his head throughout the video.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <video controls muted preload autoplay loop width="100%">
+                                    <source src="static/video/results/6.mp4" type="video/mp4">
+                                </video>
+                                <p>
+                                    She is young. She has arched eyebrows and is wearing lipstick. She has long hair.
+                                    This woman begins with a neutral face and then surprised. She talks and then turns
+                                    the head.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <video controls muted preload autoplay loop width="100%">
+                                    <source src="static/video/results/5.mp4" type="video/mp4">
+                                </video>
+                                <p>
+                                    The man is young. He has a big nose and big lips. He has black hair. The man is
+                                    first happy and then neutral. He first smiles and then turns his head.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <video controls muted preload autoplay loop width="100%">
+                                    <source src="static/video/results/7.mp4" type="video/mp4">
+                                </video>
+                                <p>
+                                    This young woman has bags under eyes. She has long hair. She wears lipstick and has
+                                    a big nose. She keeps a happy face all the time. She first smiles and then turns the
+                                    head.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+            </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-four-fifths">
+        <h3 class="title is-4 has-text-centered">Generated Results </h3>
+        <div class="content has-text-justified">
+
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop width="100%">
+                            <source src="static/video/results/1.mp4" type="video/mp4">
+                        </video>
+                        <p>
+                            <font color="#7030a0">The young man has arched eyebrows and brown hair. He has bags under
+                                eyes.</font>
+                            <font color="#bf9106">He is first neutral and then happy, and finally he is neutral.</font>
+                            <font color="#3488cb">He smiles all the time.</font>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop width="100%">
+                            <source src="static/video/results/3.mp4" type="video/mp4">
+                        </video>
+                        <p>
+                            <font color="#7030a0">The young woman has arched eyebrows. She has brown hair and she has an
+                                oval face.</font>
+                            <font color="#bf9106">She is first surprised and then neutral.</font>
+                            <font color="#3488cb">She wags her head and then talks.</font>
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop width="100%">
+                            <source src="static/video/results/2.mp4" type="video/mp4">
+                        </video>
+                        <p>
+                            <font color="#7030a0">The young man has brown hair. He has beard and 5 o'clock
+                                shadow.</font>
+                            <font color="#bf9106">He is neutral and then turns he is surprised.</font>
+                            <font color="#3488cb">He is talking and then he nods his head.</font>
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop width="100%">
+                            <source src="static/video/results/8.mp4" type="video/mp4">
+                        </video>
+                        <p>
+                            <font color="#7030a0">This young woman has a long brown hair. She wears lipstick. She has an
+                                oval face.</font>
+                            <font color="#bf9106">Firstly, she is happy, and then she has a neutral face.</font>
+                            <font color="#3488cb">She blinks and then gazes.</font>
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop width="100%">
+                            <source src="static/video/results/10.mp4" type="video/mp4">
+                        </video>
+                        <p>
+                            <font color="#7030a0">The man has bushy eyebrows and bags under eyes. He has beard and
+                                mustache. He has brown hair.</font>
+                            <font color="#bf9106">He is first neutral and then turns surprised.</font>
+                            <font color="#3488cb">He begins with talking and then wagging his head.</font>
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                        <video controls muted preload autoplay loop width="100%">
+                            <source src="static/video/results/9.mp4" type="video/mp4">
+                        </video>
+                        <p>
+                            <font color="#7030a0">She has long black hair. She is young. She has arched eyebrows and
+                                bags under eyes.</font>
+                            <font color="#bf9106">She is happy all the time.</font>
+                            <font color="#3488cb">She nods her head and then smiles.</font>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="content has-text-justified">
+                <div class="columns is-centered">
+                    <div class="column">
+                        <div class="content">
+                            <video controls muted preload autoplay loop width="100%">
+                                <source src="static/video/results/4.mp4" type="video/mp4">
+                            </video>
+                            <p>
+                                <font color="#7030a0">The man has beard and 5 o'clock shadow. He has bushy
+                                    eyebrows.</font>
+                                <font color="#bf9106">He has an angry face the whole time.</font>
+                                <font color="#3488cb">He begins to smile and then talks.</font>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <video controls muted preload autoplay loop width="100%">
+                                <source src="static/video/results/6.mp4" type="video/mp4">
+                            </video>
+                            <p>
+                                <font color="#7030a0">She is young. She has arched eyebrows and is wearing lipstick. She
+                                    has long hair.</font>
+                                <font color="#bf9106">This woman begins with a neutral face and then surprised.</font>
+                                <font color="#3488cb">She talks and then turns the head.</font>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <video controls muted preload autoplay loop width="100%">
+                                <source src="static/video/results/5.mp4" type="video/mp4">
+                            </video>
+                            <p>
+                                <font color="#7030a0">The man is young. He has arched eyebrows.</font>
+                                <font color="#bf9106">The man has a neutral face and then surprised.</font>
+                                <font color="#3488cb">He wags his head and then talks.</font>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <video controls muted preload autoplay loop width="100%">
+                                <source src="static/video/results/7.mp4" type="video/mp4">
+                            </video>
+                            <p>
+                                <font color="#7030a0">This young woman has wavy and long hair.</font>
+                                <font color="#bf9106">She wears lipstick and earrings. She keeps a happy face all the time.</font>
+                                <font color="#3488cb">She first smiles and then blinks.</font>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <video controls muted preload autoplay loop width="100%">
+                                <source src="static/video/results/12.mp4" type="video/mp4">
+                            </video>
+                            <p>
+                                <font color="#7030a0">He has beard and mustache, and he is wearing eyeglasses.</font>
+                                <font color="#bf9106">He is angry all the time.</font>
+                                <font color="#3488cb">He talks and then wags the head.</font>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <video controls muted preload autoplay loop width="100%">
+                                <source src="static/video/results/11.mp4" type="video/mp4">
+                            </video>
+                            <p>
+                                <font color="#7030a0">This young female has straight hair. She has long black hair. The
+                                    woman has arched eyebrows and bags under eyes.</font>
+                                <font color="#bf9106">She is happy and then turns to be neutral.</font>
+                                <font color="#3488cb">She smiles and then turns her head.</font>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p><small>*The generated videos presented above were interpolated 10 times for better visualization.</small>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<hr/>
+
+
+
+<!-- Visual ChatGPT Demo. -->
+<section class="section">
+    <div class="container has-text-centered">
+        <h2 class="title is-3">Visual ChatGPT Demo</h2>
+        <div class="content has-text-justified">
+            <p>
+                This is a toy example of the application of text-to-face model with ChatGPT. 
+                In this demo, we use  <a href="https://github.com/snap-research/MMVID">MMVID</a> simply trained on the porposed CelebV-Text dataset, 
+                to demonstrate CelebV-Text's potential in enabling visual GPT applications. 
+                In the future, more sophisticated methods prospectively lead to better results.
+                
+                <!-- We follow the implementation of <a href="https://github.com/microsoft/visual-chatgpt">Visual ChatGPT</a>
+                to which we embed our network and trained models into the existing work.
+                Here, ee present our implemented demos, which connect ChatGPT with our text-to-video generation
+                baselines to enable sending and receiving face videos during chatting. -->
+            </p>
+        </div>
+
+        <div class="columns is-centered is-two-fifths">
+            <div class="column">
+                <div class="content">
+                    <video controls muted preload autoplay loop height="100%">
+                        <source src="./static/video/chatgpt/face_edition.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="column">
+                <div class="content">
+                    <video controls muted preload autoplay loop height="100%">
+                        <source src="./static/video/chatgpt/complex_input_demo.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3 "> Agreement</h2>
+                <div class="content has-text-justified">
+                    <ul>
+                        <li>The CelebV-Text dataset is available for non-commercial research purposes only.</li>
+                        <li>All videos of the CelebV-Text dataset are obtained from the Internet which are not
+                            property
+                            of
+                            our institutions. Our institution are not responsible for the content nor the meaning
+                            of these videos.
+                        </li>
+                        <li>You agree not to reproduce, duplicate, copy, sell, trade, resell or exploit for any
+                            commercial purposes, any portion of the videos and any portion of derived data.
+                        </li>
+                        <li>You agree not to further copy, publish or distribute any portion of the CelebV-Text
+                            dataset. Except, for internal use at a single site within the same organization it is
+                            allowed to make copies of the dataset.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3 "> Resources</h2>
+                <div class="content has-text-justified">
+                    <p class="text-justify">We provide a download tool that automatically fetches and processes
+                        videos
+                        from <a href="https://www.youtube.com">YouTube</a>.
+                        We highly recommend using <a href="https://github.com/celebv-text/celebv-text#videos">this
+                            tool</a> to acquire the dataset.
+                        In addition, as some links may no longer be available, we host the full version of
+                        CelebV-Text. Please contact us if needed.</p>
+
+                    <ul id="pic_list">
+
+
+                        <li>
+                            <div class="content">
+                                <figure>
+                                    <a href="https://github.com/celebv-text/celebv-text#text">
+                                        <img src="static/img/download_icon.jpeg" height="80px" width="100px"
+                                             alt="download">
+                                        <figcaption> Text Descriptions</figcaption>
+                                    </a>
+                                </figure>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="content">
+                                <figure>
+                                    <a href="https://github.com/celebv-text/CelebV-Text/blob/main/celebvtext_info.json">
+                                        <img src="static/img/download_icon.jpeg" height="80px" width="100px"
+                                             alt="download">
+                                        <figcaption> Video Download JSON</figcaption>
+                                    </a>
+                                </figure>
+                            </div>
+                        </li>
+
+                        <li>
+                            <figure>
+                                <a href="https://github.com/celebv-text/celebv-text#models">
+                                    <img src="static/img/download_icon.jpeg" height="80px" width="100px"
+                                         alt="download">
+                                    <figcaption> Benchmark Models</figcaption>
+                                </a>
+                            </figure>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr/>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3 "> More Work May Interest You</h2>
+                <div class="content has-text-justified">
+                    <p>There are several our previous publications that might be of interest to you. </p>
+                    <h4> Face Generation: </h4>
+                    <p class="text-justify"><b><a href="https://celebv-hq.github.io/">CelebV-HQ:</a> </b>A Large-scale
+                        Video Facial Attributes Dataset. <i>Zhu et al., <b>ECCV 2022</b></i></p>
+                    <p class="text-justify"><b><a href="https://billyxyb.github.io/TransEditor/">TransEditor:</a> </b>
+                        Transformer-Based Dual-Space GAN for Highly Controllable Facial Editing. <i>Xu et al., <b>CVPR
+                            2022</b></i></p>
+
+                    <h4> Human Generation: </h4>
+                    <p class="text-justify"><b><a href="https://3dhumangan.github.io/">3DHumanGAN: </a></b>Towards
+                        Photo-realistic 3D-Aware Human Image Generation. <i>Yang et al., <b>Tech. Report 2022</b></i>
+                    </p>
+                    <p class="text-justify"><b><a href="https://stylegan-human.github.io/">StyleGAN-Human:</a></b> A
+                        Data-Centric Odyssey of Human. <i>Fu et al., <b>ECCV 2022</b></i></p>
+                    <p class="text-justify"><b><a
+                            href="https://yumingj.github.io/projects/Text2Human.html">Text2Human: </a></b> Text-Driven
+                        Controllable Human Image Generation. <i>Jiang et al., <b>SIGGRAPH 2022</b></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr/>
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3 "> Acknowledgements</h2>
+                <div class="content has-text-justified">
+                    <p class="text-justify">
+                        CelebV-Text is affiliated with OpenXDLab -- an open platform for X-Dimension high-quality data. This work is supported by NTU NAP, MOE AcRF Tier 1 (2021-T1-001-088).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr/>
+
+<section class="section" id="Citaton">
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <p>If you find this helpful, please cite our work: </p>
+        <pre><code>@inproceedings{yu2022celebvtext,
+  title={{CelebV-Text}: A Large-Scale Facial Text-Video Dataset},
+  author={Yu, Jianhui and Zhu, Hao and Jiang, Liming and Loy, Chen Change and Cai, Weidong and Wu, Wayne},
+  booktitle={CVPR},
+  year={2023}
+}</code></pre>
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="columns is-centered">
+        <div class="content">
+            <p> This template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io"> nerfies's
+                webpage</a>. </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    $(window).on('load', function () {
+        $('#loading').hide();
+    })
+</script>
+</body>
+
+</html>
