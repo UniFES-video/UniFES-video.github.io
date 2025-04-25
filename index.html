@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="CelebV-Text: A Large-Scale Facial Text-Video Dataset">
-    <meta name="keywords" content="CelebV-Text Dataset">
+    <meta name="description" content="UniFES: A Unified Recurrent Network for Quality Enhancement and Stabilization in Face Videos">
+    <meta name="keywords" content="Face video quality enhancement, face video stabilization, unified recurrent network">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CelebV-Text: A Large-Scale Facial Text-Video Dataset</title>
+    <title>UniFES: A Unified Recurrent Network for Quality Enhancement and Stabilization in Face Videos</title>
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -39,103 +39,103 @@
 
 <body>
 
-<section class="hero">
-    <div class="hero-body">
-        <div class="container is-max-desktop">
-            <div class="columns is-centered">
-                <div class="column has-text-centered">
-                    <h1 class="title is-1 publication-title">CelebV-Text: A Large-Scale Facial Text-Video Dataset</h1>
-                    <div class="is-size-5 publication-authors">
-                        <span class="author-block"></span>
-                        <h3 style="color:#5a6268;">CVPR 2023</h3>
-                        <span class="author-block">
-                            <a href="https://scholar.google.com/citations?user=sdxlMmMAAAAJ&hl=en">Jianhui Yu</a><sup>1*</sup>,
-                        </span>
-                        <span class="author-block">
-                            <a href="https://www.zhuhaozh.xyz">Hao Zhu</a><sup>2*</sup>,
-                        </span>
-                        <span class="author-block">
-                            <a href="https://liming-jiang.com/">Liming Jiang</a><sup>3</sup>,
-                        </span>
-                        <span class="author-block">
-                            <a href="https://scholar.google.com/citations?user=559LF80AAAAJ&hl=en">Chen Change Loy</a><sup>3</sup>,
-                        </span>
-                        <span class="author-block">
-                            <a href="https://weidong-tom-cai.github.io/">Weidong Cai</a><sup>1 </sup>,
-                        </span>
-                        <span class="author-block">
-                            <a href="https://wywu.github.io/">Wayne Wu</a><sup>4&#8224 </sup>
-                        </span>
-                        <br>
-                        <small>(*Equal contribution)</small>
-                    </div>
+<!--<section class="hero">-->
+<!--    <div class="hero-body">-->
+<!--        <div class="container is-max-desktop">-->
+<!--            <div class="columns is-centered">-->
+<!--                <div class="column has-text-centered">-->
+<!--                    <h1 class="title is-1 publication-title">CelebV-Text: A Large-Scale Facial Text-Video Dataset</h1>-->
+<!--                    <div class="is-size-5 publication-authors">-->
+<!--                        <span class="author-block"></span>-->
+<!--                        <h3 style="color:#5a6268;">CVPR 2023</h3>-->
+<!--                        <span class="author-block">-->
+<!--                            <a href="https://scholar.google.com/citations?user=sdxlMmMAAAAJ&hl=en">Jianhui Yu</a><sup>1*</sup>,-->
+<!--                        </span>-->
+<!--                        <span class="author-block">-->
+<!--                            <a href="https://www.zhuhaozh.xyz">Hao Zhu</a><sup>2*</sup>,-->
+<!--                        </span>-->
+<!--                        <span class="author-block">-->
+<!--                            <a href="https://liming-jiang.com/">Liming Jiang</a><sup>3</sup>,-->
+<!--                        </span>-->
+<!--                        <span class="author-block">-->
+<!--                            <a href="https://scholar.google.com/citations?user=559LF80AAAAJ&hl=en">Chen Change Loy</a><sup>3</sup>,-->
+<!--                        </span>-->
+<!--                        <span class="author-block">-->
+<!--                            <a href="https://weidong-tom-cai.github.io/">Weidong Cai</a><sup>1 </sup>,-->
+<!--                        </span>-->
+<!--                        <span class="author-block">-->
+<!--                            <a href="https://wywu.github.io/">Wayne Wu</a><sup>4&#8224 </sup>-->
+<!--                        </span>-->
+<!--                        <br>-->
+<!--                        <small>(*Equal contribution)</small>-->
+<!--                    </div>-->
 
 
-                    <div class="is-size-5 publication-authors">
-                        <span class="author-block"><sup>1</sup>University of Sydney, </span>
-                        <span class="author-block"><sup>2</sup>SenseTime Research, </span>
-                        <span class="author-block"><sup>3</sup>S-Lab, Nanyang Technological University </span>
-                        <span class="author-block"><sup>4</sup>Shanghai AI Laboratory </span>
-                    </div>
+<!--                    <div class="is-size-5 publication-authors">-->
+<!--                        <span class="author-block"><sup>1</sup>University of Sydney, </span>-->
+<!--                        <span class="author-block"><sup>2</sup>SenseTime Research, </span>-->
+<!--                        <span class="author-block"><sup>3</sup>S-Lab, Nanyang Technological University </span>-->
+<!--                        <span class="author-block"><sup>4</sup>Shanghai AI Laboratory </span>-->
+<!--                    </div>-->
 
-                    <div class="column has-text-centered">
-                        <div class="publication-links">
-                            <!-- PDF Link. -->
-                            <span class="link-block">
-                                <a href="https://arxiv.org/pdf/2303.14717.pdf"
-                                   class="external-link button is-normal is-rounded is-dark">
-                                    <span class="icon">
-                                        <i class="fas fa-file-pdf"></i>
-                                    </span>
-                                    <span>Paper (arxiv)</span>
-                                </a>
-                            </span>
-                            <!-- <span class="link-block">
-                              <a href="https://drive.google.com/file/d/1WsopipyFG5Kuilwo0pbOmzhZfxs0dx-C/view?usp=sharing"
-                                target="_blank" class="external-link button is-normal is-rounded is-dark">
-                                <span class="icon">
-                                  <i class="ai ai-arxiv"></i>
-                                </span>
-                                <span>Supplement</span>
-                              </a>
-                            </span> -->
-                            <!-- Code Link. -->
-                            <span class="link-block">
-                                <a href="https://github.com/CelebV-Text/CelebV-Text"
-                                   class="external-link button is-normal is-rounded is-dark">
-                                    <span class="icon">
-                                        <i class="fab fa-github"></i>
-                                    </span>
-                                    <span>GitHub</span>
-                                </a>
-                            </span>
-                            <!-- Video Link. -->
-                            <span class="link-block">
-                                <a href="https://www.youtube.com/watch?v=0TS1hQwjNWw"
-                                   class="external-link button is-normal is-rounded is-dark">
-                                    <span class="icon">
-                                        <i class="fab fa-youtube"></i>
-                                    </span>
-                                    <span>Demo Video</span>
-                                </a>
-                            </span>
-                            <!-- Dataset Link. -->
-                            <span class="link-block">
-                                <a href="#" class="external-link button is-normal is-rounded is-dark">
-                                    <span class="icon">
-                                        <i class="far fa-images"></i>
-                                    </span>
-                                    <span>Data Explore (Coming soon)</span>
-                                </a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<br>
+<!--                    <div class="column has-text-centered">-->
+<!--                        <div class="publication-links">-->
+<!--                            &lt;!&ndash; PDF Link. &ndash;&gt;-->
+<!--                            <span class="link-block">-->
+<!--                                <a href="https://arxiv.org/pdf/2303.14717.pdf"-->
+<!--                                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                                    <span class="icon">-->
+<!--                                        <i class="fas fa-file-pdf"></i>-->
+<!--                                    </span>-->
+<!--                                    <span>Paper (arxiv)</span>-->
+<!--                                </a>-->
+<!--                            </span>-->
+<!--                            &lt;!&ndash; <span class="link-block">-->
+<!--                              <a href="https://drive.google.com/file/d/1WsopipyFG5Kuilwo0pbOmzhZfxs0dx-C/view?usp=sharing"-->
+<!--                                target="_blank" class="external-link button is-normal is-rounded is-dark">-->
+<!--                                <span class="icon">-->
+<!--                                  <i class="ai ai-arxiv"></i>-->
+<!--                                </span>-->
+<!--                                <span>Supplement</span>-->
+<!--                              </a>-->
+<!--                            </span> &ndash;&gt;-->
+<!--                            &lt;!&ndash; Code Link. &ndash;&gt;-->
+<!--                            <span class="link-block">-->
+<!--                                <a href="https://github.com/CelebV-Text/CelebV-Text"-->
+<!--                                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                                    <span class="icon">-->
+<!--                                        <i class="fab fa-github"></i>-->
+<!--                                    </span>-->
+<!--                                    <span>GitHub</span>-->
+<!--                                </a>-->
+<!--                            </span>-->
+<!--                            &lt;!&ndash; Video Link. &ndash;&gt;-->
+<!--                            <span class="link-block">-->
+<!--                                <a href="https://www.youtube.com/watch?v=0TS1hQwjNWw"-->
+<!--                                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                                    <span class="icon">-->
+<!--                                        <i class="fab fa-youtube"></i>-->
+<!--                                    </span>-->
+<!--                                    <span>Demo Video</span>-->
+<!--                                </a>-->
+<!--                            </span>-->
+<!--                            &lt;!&ndash; Dataset Link. &ndash;&gt;-->
+<!--                            <span class="link-block">-->
+<!--                                <a href="#" class="external-link button is-normal is-rounded is-dark">-->
+<!--                                    <span class="icon">-->
+<!--                                        <i class="far fa-images"></i>-->
+<!--                                    </span>-->
+<!--                                    <span>Data Explore (Coming soon)</span>-->
+<!--                                </a>-->
+<!--                            </span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+<!--<br>-->
 
 <!-- Teaser Picture -->
 <section class="hero teaser">
